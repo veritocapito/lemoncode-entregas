@@ -1,21 +1,21 @@
 @use 'sass:color';
 
 // Colores base
-$color-rojo: #e53935;
-$color-azul: #3f51b5;
-$color-verde: #4caf50;
+$temas-color: (
+  "rojo": #e53935,
+  "azul": #3f51b5,
+  "verde": #4caf50
+);
 
 // Variables para el contraste (accesibilidad)
 $color-texto-claro: #f8f8f8;
 $color-texto-oscuro: #1a1a1a;
 $umbral-contraste: 60%;
-
-// Porcentaje de mezcla para cada paso (oscurecer/aclarar)
 $paso-mezcla: 15%;
 
 // Función de Accesibilidad
 @function set-text-color($color-fondo) {
-  @if (color.lightness($color-fondo) > $umbral-contraste) {
+  @if (color.channel($color-fondo, "lightness", $space: hsl) > $umbral-contraste) {
     @return $color-texto-oscuro;
   } @else {
     @return $color-texto-claro;
@@ -97,14 +97,9 @@ h2 {
 }
 
 // Cada mixin se aplica dentro de cada clase de tema
-.container-1 {
-  @include crear-tema-color($color-rojo);
-}
-
-.container-2 {
-  @include crear-tema-color($color-azul, $step: 13%);
-}
-
-.container-3 {
-  @include crear-tema-color($color-verde);
+@each $nombre-tema, $color-base in $temas-color {
+  // Genera la clase .container-rojo, .container-azul, etc.
+  .container-#{$nombre-tema} {
+    @include crear-tema-color($color-base, $paso-mezcla);
+  }
 }
