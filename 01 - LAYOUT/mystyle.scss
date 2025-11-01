@@ -1,0 +1,110 @@
+@use 'sass:color';
+
+// Colores base
+$color-rojo: #e53935;
+$color-azul: #3f51b5;
+$color-verde: #4caf50;
+
+// Variables para el contraste (accesibilidad)
+$color-texto-claro: #f8f8f8;
+$color-texto-oscuro: #1a1a1a;
+$umbral-contraste: 60%;
+
+// Porcentaje de mezcla para cada paso (oscurecer/aclarar)
+$paso-mezcla: 15%;
+
+// Función de Accesibilidad
+@function set-text-color($color-fondo) {
+  @if (color.lightness($color-fondo) > $umbral-contraste) {
+    @return $color-texto-oscuro;
+  } @else {
+    @return $color-texto-claro;
+  }
+}
+
+// Mixin para la Paleta Dinamica
+@mixin crear-tema-color($color-base, $step: $paso-mezcla) {
+  .base-color {
+    background-color: $color-base;
+    color: set-text-color($color-base);
+  }
+
+  // Genera 4 Tonos Claros (mezclando con blanco)
+  @for $i from 1 through 4 {
+    .lighten-#{$i} {
+      $color-aclarado: color.mix(white, $color-base, $step * $i);
+      background-color: $color-aclarado;
+      color: set-text-color($color-aclarado);
+    }
+  }
+
+  // Genera 4 Tonos Oscuros (mezclando con negro)
+  @for $i from 1 through 4 {
+    .darken-#{$i} {
+      $color-oscurecido: color.mix(black, $color-base, $step * $i);
+      background-color: $color-oscurecido;
+      color: set-text-color($color-oscurecido);
+    }
+  }
+}
+
+
+// Estilos HTML
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: #c9c9f5;
+  padding: 1rem;
+}
+
+h2 {
+  font-weight: 600;
+  color: #333;
+}
+
+// Contenedor
+[class^="container-"] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+// Cajas
+.box {
+  flex: 1;
+  min-width: 100px;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.color-box-text {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+// Cada mixin se aplica dentro de cada clase de tema
+.container-1 {
+  @include crear-tema-color($color-rojo);
+}
+
+.container-2 {
+  @include crear-tema-color($color-azul, $step: 13%);
+}
+
+.container-3 {
+  @include crear-tema-color($color-verde);
+}
