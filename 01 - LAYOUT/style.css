@@ -195,3 +195,79 @@ a {
         width: 100%; 
     }
 }
+
+.card {
+    display: grid; 
+    grid-template-rows: auto 1fr auto min-content; 
+    grid-template-columns: 1fr; 
+    width: 300px;
+    background-color: #ffffff;
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-wrapper {
+    grid-row: 1 / 2;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-content {
+    grid-row: 2 / 3;
+    padding: 10px;
+    color: #444;
+}
+
+.card-title {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.card-footer {
+    grid-row: 3 / 4;
+    padding: 10px; 
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
+}
+
+.publish-date {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-button {
+    grid-row: 4 / 5; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4baf20; 
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background-color: #6bdd32;
+}
