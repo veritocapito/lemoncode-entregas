@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+main {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+}
+
+section {
+    margin: 50px;
+}
+
+/* Tema A: Rojos */
+:root {
+    /* Colores */
+    --color-base: #E53935;    
+    --color-important: #880E4F; 
+    --color-warning: #F8BBD0;  
+    
+    /* Tipografía */
+    --font-principal: 'Georgia', serif;
+    --font-secondary: 'Verdana', sans-serif;
+
+    /* Estilos */
+    --border-radius: 4px;
+    --shadow-color-rgb: 0, 0, 0; 
+}
+
+/* Tema B: Azules */
+.theme-b {
+    /* Colores */
+    --color-base: #3F51B5;    
+    --color-important: #004D40; 
+    --color-warning: #00BCD4;  
+
+    /* Tipografía */
+    --font-principal: 'Arial', sans-serif;
+    --font-secondary: 'Courier New', monospace;
+
+    /* Estilos */
+    --border-radius: 12px;
+    --shadow-color-rgb: 30, 136, 229;
+}
+
+.theme-b{
+    display: none;
+}
+
+input#theme-toggle:checked ~ .theme-a {
+    display: none;
+}
+input#theme-toggle:checked ~ .theme-b {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 10px;
+}
+
+.theme-a {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 10px;
+}
+
+.box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.theme-box {
+    border-radius: var(--border-radius);
+    padding: 20px;
+    color: white;
+    font-size: 1.1rem;
+    font-family: var(--font-principal);
+    transition: background-color 0.3s, border-radius 0.3s;
+}
+
+.base {
+    background-color: var(--color-base);
+}
+
+.important {
+    background-color: var(--color-important);
+}
+
+.warning {
+    background-color: var(--color-warning);
+    color: black;
+}
+
+.text-principal {
+    font-family: var(--font-principal);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem;
+    transition: font-family 0.3s;
+}
+
+.text-secondary {
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    margin: 1rem;
+    transition: font-family 0.3s;
+}
+
+.shadow-box {
+    border-radius: var(--border-radius);
+    width: 250px;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-family: var(--font-secondary);
+    transition: all 0.5s;
+    
+    box-shadow: 0 4px 8px 0 rgba(var(--shadow-color-rgb), 0.2), 
+                0 6px 20px 0 rgba(var(--shadow-color-rgb), 0.19);
+}
+
