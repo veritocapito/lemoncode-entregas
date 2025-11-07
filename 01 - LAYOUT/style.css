@@ -142,3 +142,56 @@ input#theme-toggle:checked ~ .theme-b {
                 0 6px 20px 0 rgba(var(--shadow-color-rgb), 0.19);
 }
 
+a {
+    text-decoration: none;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    padding-right: 20px;
+    margin: 10px 0;
+}
+
+.nav-menu {
+    display: flex; 
+    flex-grow: 1; 
+    background-color: #008080;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.nav-item {
+    padding: 15px 20px; 
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.2s; 
+}
+
+.nav-item.active {
+    background-color: #2F4F4F; 
+}
+
+.nav-item:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 767px) {
+    
+    .navbar-container {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .nav-menu {
+        width: 100%; 
+        flex-direction: column; 
+    }
+
+    .nav-item {
+        width: 100%; 
+    }
+}
