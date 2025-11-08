@@ -144,6 +144,7 @@ input#theme-toggle:checked ~ .theme-b {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 .logo {
@@ -270,4 +271,11 @@ a {
 
 .card-button:hover {
     background-color: #6bdd32;
+}
+
+ul>li {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    list-style: none;
+    color: #3F51B5;
 }
