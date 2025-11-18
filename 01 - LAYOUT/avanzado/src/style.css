@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+}
+ 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #141414;
+    color: #ffffff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(5px);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-logo img {
+  width: 40px;
+}
+
+.platform-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 25px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.header-buttons div {
+  cursor: pointer;
+}
+
+.header-buttons div:hover {
+  color: #aaa;
+}
+
+main {
+  padding: 0 40px;
+}
+
+.section-title {
+  font-size: 1.5rem; 
+  font-weight: 600;
+  margin-top: 30px; 
+  margin-bottom: 15px;
+}
+
+.first,
+.second {
+  display: flex; 
+  gap: 15px;   
+  overflow-x: auto; 
+  overflow-y: hidden;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+}
+
+.item {
+  min-width: 300px; 
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.item:hover {
+  transform: scale(1.05); 
+  z-index: 1; 
+}
+
+#top-text::after {
+  content: "5";
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0;
+  counter-reset: ranking; 
+  flex-wrap: wrap; 
+}
+
+.top-item {
+  position: relative; 
+  width: 350px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  counter-increment: ranking;
+}
+
+.top-item:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.top-item img {
+  width: 100%; 
+  height: auto;
+  border-radius: 4px;
+  position: relative; 
+  z-index: 2;
+}
+
+@media (max-width: 1280px) {
+  
+  #top-text::after {
+    content: "3";
+  }
+
+  .top-item:nth-child(4),
+  .top-item:nth-child(5) {
+    display: none;
+  }
+
+  header {
+    padding: 15px 20px;
+  }
+
+  .platform-title {
+    font-size: 1.2rem;
+  }
+  
+  .first, .second {
+     padding-left: 20px;
+  }
+}
